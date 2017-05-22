@@ -53,9 +53,9 @@
             }
             ?>
         </div>
-        <div class="article">
+        <!--<div class="article">
             <h2>Sleutelwoorden voor productpagina's</h2>
-        </div>
+        </div>-->
         <div class="article">
             <h2>Genereren van thumbnails</h2>
             <?php
