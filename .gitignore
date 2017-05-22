@@ -1,0 +1,8 @@
+resources/include/*
+vendor/
+web/assets/img/analysis/*.jpg
+web/assets/img/analysis/*.png
+web/assets/img/generate/*.jpg
+web/assets/img/generate/*.png
+web/assets/img/generate/thumbnails/*.jpg
+web/assets/img/generate/thumbnails/*.png
