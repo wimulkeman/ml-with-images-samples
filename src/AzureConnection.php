@@ -166,7 +166,7 @@ class AzureConnection
             'headers' => $headers
         ]);
 
-        $bodyParams = ['http_errors' => false];
+        $bodyParams = ['http_errors' => false, 'connect_timeout' => 10];
         if (!empty($options['json'])) {
             $bodyParams['json'] = $options['json'];
         }
