@@ -18,6 +18,9 @@
         .article:hover {
             background-color: aliceblue;
         }
+        img {
+            margin: 5px;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +37,7 @@
                     $imageSrc = "assets/img/analysis/{$image}";
                     $imageSrcEncoded = base64_encode($imageSrc);
 
-                    echo "<a href='?service=analyse&action=keywords&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='20%'></a>";
+                    echo "<a href='?service=analyse&action=keywords&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='40%'></a>";
                 }
             ?>
         </div>
@@ -49,7 +52,7 @@
                 $imageSrc = "assets/img/analysis/{$image}";
                 $imageSrcEncoded = base64_encode($imageSrc);
 
-                echo "<a href='?service=analyse&action=alt_text&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='20%'></a>";
+                echo "<a href='?service=analyse&action=alt_text&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='40%'></a>";
             }
             ?>
         </div>
@@ -71,7 +74,7 @@
                 $imageSrc = "assets/img/generate/{$image}";
                 $imageSrcEncoded = base64_encode($imageSrc);
 
-                echo "<a href='?service=generate&action=gerenate_thumbmail&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='20%'></a>";
+                echo "<a href='?service=generate&action=gerenate_thumbmail&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='40%'></a>";
             }
             ?>
         </div>
