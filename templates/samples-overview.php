@@ -74,7 +74,7 @@
                 $imageSrc = "assets/img/generate/{$image}";
                 $imageSrcEncoded = base64_encode($imageSrc);
 
-                echo "<a href='?service=generate&action=gerenate_thumbmail&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='40%'></a>";
+                echo "<a href='?service=generate&action=generate_thumbnail&image_src=$imageSrcEncoded'><img src='{$imageSrc}' width='40%'></a>";
             }
             ?>
         </div>

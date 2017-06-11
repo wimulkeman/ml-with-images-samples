@@ -33,16 +33,18 @@ if ($_GET['service'] === 'analyse' && $_GET['action'] === 'alt_text') {
     return;
 }
 
-if ($_GET['service'] === 'generate' && $_GET['action'] === 'gerenate_thumbmail') {
+if ($_GET['service'] === 'generate' && $_GET['action'] === 'generate_thumbnail') {
     $decodedImageSrc = base64_decode($_GET['image_src']);
     $currentImage = $webDir . $decodedImageSrc;
 
     $assetThumbnailLocation = dirname($decodedImageSrc) . '/thumbnails/' . pathinfo($decodedImageSrc)['basename'];
     $fullThumbnailLocation = $webDir . $assetThumbnailLocation;
 
-    $analysisResponse = $azureConnection->generateImageThumbnail($currentImage, $fullThumbnailLocation);
-    if (!$analysisResponse) {
-        throw new \RuntimeException('No thumbnail image vould be generated');
+    if (!is_file($fullThumbnailLocation)) {
+        $analysisResponse = $azureConnection->generateImageThumbnail($currentImage, $fullThumbnailLocation);
+        if (! $analysisResponse) {
+            throw new \RuntimeException('No thumbnail image could be generated');
+        }
     }
 
     include $templatesDir . 'generated-thumbnail.php';
