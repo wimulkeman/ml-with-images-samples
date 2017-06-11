@@ -14,7 +14,7 @@ include $vendorDir . 'autoload.php';
 include $resourcesIncludeDir . 'parameters.php';
 include $srcDir . 'AzureConnection.php';
 
-function getApiResponseFilename() {
+function getApiJsonResponseFilename() {
     global $webDir;
 
     $decodedImageSrc = base64_decode($_GET['image_src']);
@@ -31,14 +31,14 @@ function getApiResponseFilename() {
     return $resourceFile;
 }
 
-function saveApiResponse($apiResponse) {
-    $resourceFile = getApiResponseFilename();
+function saveApiJsonResponse($apiResponse) {
+    $resourceFile = getApiJsonResponseFilename();
 
     file_put_contents($resourceFile, json_encode($apiResponse));
 }
 
-function getApiResponse() {
-    $resourceFile = getApiResponseFilename();
+function getApiJsonResponse() {
+    $resourceFile = getApiJsonResponseFilename();
 
     if (!is_file($resourceFile)) {
         return '';
@@ -55,11 +55,11 @@ $azureConnection->setApiKey(AZURE_VISION_API_KEY_EU);
 if ($_GET['service'] === 'analyse' && $_GET['action'] === 'keywords') {
     $decodedImageSrc = base64_decode($_GET['image_src']);
 
-    $analysisResponse = getApiResponse();
+    $analysisResponse = getApiJsonResponse();
     if (!$analysisResponse) {
         $analysisResponse = $azureConnection->analyseImage($webDir . $decodedImageSrc);
 
-        saveApiResponse($analysisResponse);
+        saveApiJsonResponse($analysisResponse);
     }
 
     include $templatesDir . 'image-keywords.php';
@@ -69,11 +69,11 @@ if ($_GET['service'] === 'analyse' && $_GET['action'] === 'keywords') {
 if ($_GET['service'] === 'analyse' && $_GET['action'] === 'alt_text') {
     $decodedImageSrc = base64_decode($_GET['image_src']);
 
-    $analysisResponse = getApiResponse();
+    $analysisResponse = getApiJsonResponse();
     if (!$analysisResponse) {
         $analysisResponse = $azureConnection->analyseImage($webDir . $decodedImageSrc);
 
-        saveApiResponse($analysisResponse);
+        saveApiJsonResponse($analysisResponse);
     }
 
     include $templatesDir . 'image-alt-text.php';
